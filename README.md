@@ -172,3 +172,8 @@ Suzie's grade is A
 
 Remember, since a `HashMap` is unordered, we may not iterate through the map
 the same way we entered the key/value pairs.
+
+## References
+
+- [Java 17 Map Interface](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html)
+- [Java 17 HashMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html)
