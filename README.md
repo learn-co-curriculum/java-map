@@ -67,21 +67,31 @@ two parameters - the key object and the value object. We can access the value of
 the items in our list by using the `get()` method, which takes the key object as
 its parameter.
 
+Similarly, for maps, we don't have to include the data types in the second
+diamond operator `<>` since it will be implied by the `Map` declaration on the
+left-hand side of the assignment `=` operator.
+
 ### HashMap Constructors
 
 Another way we could have written the above example is to define the map as a
 `HashMap` from the start like so:
 
 ```java
-HashMap<String, Character> studentGrades = new HashMap<String, Character>();
+HashMap<String, Character> studentGrades = new HashMap<>();
 ```
+
+While this is fine, it is almost always better to declare a map using `Map`
+instead of `HashMap`. Remember, `Map` is an interface, and if we needed to
+swap out the implementation of a `HashMap`, for maybe a `LinkedHashMap`, then
+the change would be more difficult if being used by other classes within the
+codebase.
 
 Just like the  `ArrayList` and `HashSet`, if we have an estimate of how many
 items will be in the `HashMap`, then we can specify the initial capacity like
 so:
 
 ```java
-HashMap<String, Character> studentGrades = new HashMap<String, Character>(3);
+Map<String, Character> studentGrades = new HashMap<>(3);
 ```
 
 If we know some key/pair values when we are initializing the `HashMap`,
@@ -93,7 +103,7 @@ import java.util.HashMap;
 
 public class MapExample {
     public static void main(String[] args) {
-        HashMap<String, Character> studentGrades = new HashMap<String, Character>(
+        Map<String, Character> studentGrades = new HashMap<>(
             Map.ofEntries(Map.entry("Dustin", 'B'),
                    Map.entry("Suzie", 'A'),
                    Map.entry("Mike", 'C')
@@ -145,7 +155,7 @@ import java.util.HashMap;
 
 public class Example {
    public static void main(String[] args) {
-      HashMap<String, Character> studentGrades = new HashMap<String, Character>();
+      Map<String, Character> studentGrades = new HashMap<>();
 
       studentGrades.put("Dustin", 'B');
       studentGrades.put("Suzie", 'A');
