@@ -153,7 +153,7 @@ kind of `List`, we can iterate through a `Map` like so:
 import java.util.Map;
 import java.util.HashMap;
 
-public class Example {
+public class MapExample {
    public static void main(String[] args) {
       Map<String, Character> studentGrades = new HashMap<>();
 
@@ -172,16 +172,45 @@ Now that we are in a `for` loop, we can easily get each map entry's key and
 value. We may notice that we can use the methods `getKey()` and `getValue()`
 which will return the key and the value for each of our map entries.
 
-The above code may then output the following:
+Let's take a look at this code in the Java Visualizer. We'll place a breakpoint
+at the `for` loop.
 
-```plaintext
+![studentgrades-hashmap-visualizer](https://curriculum-content.s3.amazonaws.com/java-mod-3/map/java-visualizer-hashmap-student-grades.png)
+
+As we can see, the `Map`, unlike the `List`, does **not** store the key/value
+pairs in the order that they are inserted. By looking at how the `HashMap` is
+stored in memory, we can see that the first key/value pair we might print out is
+actually going to be "Mike" rather than "Dustin".
+
+Let's switch over to the debugger now and use the "step-over" action to see what
+the `studentGrade` variable will be assigned to when iterating through the map:
+
+![debug-first-iteration](https://curriculum-content.s3.amazonaws.com/java-mod-3/map/debugger-map-first-iteration.png)
+
+Sure enough, we see that the `studentGrade` variable is referencing the
+key/value pair with "Mike" and 'C'. If we continue stepping over, we'll see
+`Mike's grade is C` is printed to the console.
+
+Let's look at the second iteration of the `for` loop:
+
+![debug-second-iteration](https://curriculum-content.s3.amazonaws.com/java-mod-3/map/debugger-map-second-iteration.png)
+
+As we can see, the next key/pair value that `studentGrade` is assigned to
+"Dustin" and 'B'. The way Java iterates through the map is the way the map is
+stored in memory. We can see in the visualizer above that the order goes "Mike",
+"Dustin", and then "Suzie". If we continue stepping over, we'll see that on the
+third iteration of the loop, `studentGrade` gets assigned to "Suzie" and 'A' as
+the last key/value pair.
+
+![debug-third-iteration](https://curriculum-content.s3.amazonaws.com/java-mod-3/map/debugger-map-third-iteration.png)
+
+The above code will output the following:
+
+```text
 Mike's grade is C
 Dustin's grade is B
 Suzie's grade is A
 ```
-
-Remember, since a `HashMap` is unordered, we may not iterate through the map
-the same way we entered the key/value pairs.
 
 ## References
 
